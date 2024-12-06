@@ -1,5 +1,5 @@
 import { describe } from "node:test";
-import { expect, it } from "vitest";
+import { beforeEach, expect, it } from "vitest";
 import { AuthenticateUseCase } from "./authenticate";
 import { InMemoryUserRepository } from "@/repositories/in-memory/in-memory-users-repository";
 import { hash } from "bcrypt";
