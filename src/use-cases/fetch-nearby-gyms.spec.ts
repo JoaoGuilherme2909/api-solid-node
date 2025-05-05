@@ -36,8 +36,6 @@ describe("Fetch Nearby Gyms Use Cases", () => {
     });
 
     expect(gyms).toHaveLength(1);
-    expect(gyms).toEqual([
-      expect.objectContaining({ title:"near Gym" }),
-    ]);
+    expect(gyms).toEqual([expect.objectContaining({ title: "near Gym" })]);
   });
 });
