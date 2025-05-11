@@ -10,5 +10,5 @@ export async function profile(req: FastifyRequest, res: FastifyReply) {
 
   delete user.password_hash;
 
-  return res.status(200).send(user);
+  return res.status(200).send({ user });
 }
