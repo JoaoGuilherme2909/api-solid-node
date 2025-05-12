@@ -1,7 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it, test } from "vitest";
 import request from "supertest";
 import { app } from "@/app";
-import { after } from "node:test";
 
 describe("Register (e2e)", () => {
   beforeAll(async () => {
