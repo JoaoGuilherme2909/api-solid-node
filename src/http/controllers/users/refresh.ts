@@ -6,10 +6,12 @@ import { makeAuthenticateUseCase } from "@/use-cases/factories/make-authenticate
 export async function refresh(req: FastifyRequest, res: FastifyReply) {
   await req.jwtVerify({ onlyCookie: true });
 
-  const token = await res.jwtSign({}, { sign: { sub: req.user.sub } });
+  const { role } = req.user;
+
+  const token = await res.jwtSign({ role }, { sign: { sub: req.user.sub } });
 
   const refreshToken = await res.jwtSign(
-    {},
+    { role },
     {
       sign: {
         expiresIn: "7d",
