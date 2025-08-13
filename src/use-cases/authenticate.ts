@@ -20,24 +20,24 @@ export class AuthenticateUseCase {
     password,
   }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
     try {
-
       const user = await this.usersRepository.findByEmail(email);
-      
+
       if (!user) {
         throw new InvalidCredentialsError();
       }
-      
+
       const doesPasswordMatches = await compare(password, user.password_hash);
-      
+
       if (!doesPasswordMatches) {
         throw new InvalidCredentialsError();
       }
-      
+
       return {
         user,
       };
-    }catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
+      throw err;
     }
   }
 }

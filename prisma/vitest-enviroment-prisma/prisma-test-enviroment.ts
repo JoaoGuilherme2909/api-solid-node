@@ -1,4 +1,3 @@
-import { env } from "@/env";
 import { prisma } from "@/lib/prisma";
 import { execSync } from "child_process";
 import { randomUUID } from "crypto";
@@ -37,7 +36,7 @@ export default <Environment>{
         //apagar o banco de testes
 
         await prisma.$executeRawUnsafe(
-          `DROP SCHEMA IF EXISTS "${schema}" CASCADE`,
+          `DROP SCHEMA IF EXISTS "${schema}" CASCADE`
         );
 
         await prisma.$disconnect();

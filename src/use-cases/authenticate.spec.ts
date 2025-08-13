@@ -1,9 +1,10 @@
 import { describe } from "node:test";
-import { beforeEach, expect, it } from "vitest";
+import { expect, it } from "vitest";
 import { AuthenticateUseCase } from "./authenticate";
 import { InMemoryUserRepository } from "@/repositories/in-memory/in-memory-users-repository";
 import { hash } from "bcrypt";
 import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
+import { Role } from "@prisma/client";
 
 describe("Authenticate use case", () => {
   it("should be able to authenticate", async () => {
@@ -44,6 +45,7 @@ describe("Authenticate use case", () => {
       name: "John Doe",
       email: "johndoe@example",
       password_hash: await hash("123456", 6),
+      role: Role.MEMBER,
     });
 
     await expect(() =>
